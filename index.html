@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>San Valentin</title>
+  <link rel="stylesheet" href="style.css">
+  <style>* {
+    min-width: 0;
+    font: inherit;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  img,
+  video,
+  svg {
+    display: block;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100dvh;
+  }
+  
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  
+  p {
+    text-wrap: pretty;
+  }
+  
+  /* starts here */
+  
+  body {
+    background-color: palegoldenrod;
+    height: 100vh;
+  
+    & main {
+  
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+      & h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        font-weight: 700;
+      }
+  
+      & .options {
+        font-size: 1.5rem;
+        font-weight: 600;
+  
+  
+        & button {
+          padding: .5rem 1.5rem;
+          border: 2px solid rgba(0, 0, 0, .9);
+          border-radius: 5px;
+          cursor: pointer;
+          box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+        }
+  
+        & button:hover {
+          box-shadow: 2px 2px 2px rgba(0, 0, 0, .4);
+        }
+  
+        & button#yes {
+          background-color: #97cfaa;
+          margin-right: 2rem;
+        }
+  
+        & button#no {
+          background-color: #f36c46;
+        }
+      }
+    }
+  }
+  
+  #message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: palegoldenrod;
+    /* display: flex; */
+    display: none;
+    justify-content: center;
+    align-items: center;
+  
+    & h1 {
+      font-size: 3rem;
+      text-align: center;
+      font-weight: 600;
+      animation: palpitation 2s ease-in-out infinite;
+      line-height: 4rem;
+    }
+  }
+  
+  @keyframes palpitation {
+    0% {
+      transform: scale(1);
+    }
+  
+    50% {
+      transform: scale(1.1);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }</style>
+
+</head>
+
+<body>
+  <main>
+    <div id="message">
+      <h1>Siempre supe que dirias que sí <br>♥</h1>
+      <img src="https://raw.githubusercontent.com/doneber/programar-es-mi-pasion/main/san-valentin/assets/dino_love_2.webp" width="250" alt="Dino Love">
+    </div>
+    <img src="https://raw.githubusercontent.com/doneber/programar-es-mi-pasion/main/san-valentin/assets/dino_love.webp" width="250" alt="Dino Love">
+    <h1>¿Quieres ser mi San Valentín?</h1>
+    <div class="options">
+      <button id="yes">Si</button>
+      <button id="no">No</button>
+    </div>
+  </main>
+
+  <script>const buttonNo = document.querySelector('#no')
+    const buttonYes = document.querySelector('#yes')
+    
+    let fontSize = 2
+    
+    let messages = [
+      'Estas segurx?',
+      'Piensalo bien',
+      'Piensalo muy bien',
+      'Piensalo',
+      'Mira el otro botón'
+    ]
+    
+    buttonNo.addEventListener('click', () => {
+      fontSize = fontSize + .5
+      buttonYes.style.fontSize = `${fontSize}rem`
+    
+      const indexRandom = Math.floor(Math.random() * messages.length)
+    
+      buttonNo.textContent = messages[indexRandom]
+    })
+    
+    buttonYes.addEventListener('click', () => {
+      document.querySelector('#message').style.display = 'flex'
+    })</script>
+</body>
+
+</html>
